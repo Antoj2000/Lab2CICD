@@ -41,4 +41,13 @@ public class ProductController {
         }
         return ResponseEntity.ok("Product not found");
     }
+    @DeleteMapping("/deleteProduct/{id}")
+    public ResponseEntity<String> deleteProduct(@PathVariable String id) {
+        for (Product product : productList) {
+            if (product.getId().equals(id)) {
+                productList.remove(product);
+                return ResponseEntity.ok("Product deleted successfully.");
+            }
+        } return ResponseEntity.ok("Product not found");
+    }
 }
